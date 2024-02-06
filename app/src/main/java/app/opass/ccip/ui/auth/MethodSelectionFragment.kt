@@ -9,7 +9,7 @@ import app.opass.ccip.R
 import app.opass.ccip.databinding.FragmentMethodSelectionBinding
 import app.opass.ccip.databinding.IncludeAuthHeaderBinding
 import app.opass.ccip.extension.isInverted
-import app.opass.ccip.ui.event.EventActivity
+import app.opass.ccip.ui.event.EventFragment
 import app.opass.ccip.util.PreferenceUtil
 import coil.load
 
@@ -32,7 +32,7 @@ class MethodSelectionFragment : AuthActivity.PageFragment() {
 
         val header = IncludeAuthHeaderBinding.bind(binding.root)
         header.notThisEvent.setOnClickListener {
-            startActivity(Intent(requireContext(), EventActivity::class.java))
+            startActivity(Intent(requireContext(), EventFragment::class.java))
         }
 
         val context = requireContext()

@@ -1,65 +1,51 @@
 package app.opass.ccip.ui.event
 
-import android.app.Activity
-import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import app.opass.ccip.R
-import app.opass.ccip.extension.asyncExecute
+import app.opass.ccip.databinding.ItemEventBinding
 import app.opass.ccip.model.Event
-import app.opass.ccip.network.PortalClient
-import app.opass.ccip.ui.MainActivity
-import app.opass.ccip.util.PreferenceUtil
 import coil.load
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
-class EventAdapter(private val mContext: Context, private val eventList: List<Event>?) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>(),
-    CoroutineScope by CoroutineScope(Dispatchers.Main) {
+class EventAdapter(private val listener: EventClickListener) :
+    ListAdapter<Event, EventAdapter.ViewHolder>(EventDiffUtil()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_event, parent, false)
-        return ViewHolder(itemView)
+    interface EventClickListener {
+        fun onEventClicked(eventId: String)
     }
 
-    override fun onBindViewHolder(viewHolder: RecyclerView.ViewHolder, position: Int) {
-        val holder = viewHolder as ViewHolder
-        val event: Event = eventList!![position]
+    class EventDiffUtil : DiffUtil.ItemCallback<Event>() {
+        override fun areItemsTheSame(oldItem: Event, newItem: Event): Boolean {
+            return oldItem.eventId == newItem.eventId
+        }
 
-        holder.title.text = event.displayName.findBestMatch(mContext)
-        viewHolder.logo.load(event.logoUrl)
-        holder.itemView.setOnClickListener {
-            launch {
-                try {
-                    PortalClient.get().getEventConfig(event.eventId).asyncExecute().run {
-                        if (!isSuccessful) return@run
-
-                        PreferenceUtil.setCurrentEvent(mContext, body()!!)
-
-                        val intent = Intent()
-                        intent.setClass(mContext, MainActivity::class.java)
-                        mContext.startActivity(intent)
-                        (mContext as Activity).finish()
-                    }
-                } catch (e: Exception) {
-                }
+        override fun areContentsTheSame(oldItem: Event, newItem: Event): Boolean {
+            return when {
+                oldItem.displayName != newItem.displayName -> false
+                oldItem.eventId != newItem.eventId -> false
+                oldItem.logoUrl != newItem.logoUrl -> false
+                else -> true
             }
         }
     }
 
-    override fun getItemCount(): Int {
-        return eventList!!.size
+    inner class ViewHolder(val binding: ItemEventBinding) : RecyclerView.ViewHolder(binding.root)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(
+            ItemEventBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        )
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title: TextView = itemView.findViewById(R.id.event_name)
-        val logo: ImageView = itemView.findViewById(R.id.event_logo)
+    override fun onBindViewHolder(holder: EventAdapter.ViewHolder, position: Int) {
+        val event = getItem(position)
+
+        holder.binding.apply {
+            eventName.text = event.displayName.findBestMatch(root.context)
+            eventLogo.load(event.logoUrl)
+            root.setOnClickListener { listener.onEventClicked(event.eventId) }
+        }
     }
 }

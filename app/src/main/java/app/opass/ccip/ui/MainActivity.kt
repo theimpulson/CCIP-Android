@@ -33,7 +33,7 @@ import app.opass.ccip.model.FeatureType
 import app.opass.ccip.model.WifiNetworkInfo
 import app.opass.ccip.network.PortalClient
 import app.opass.ccip.ui.announcement.AnnouncementFragment
-import app.opass.ccip.ui.event.EventActivity
+import app.opass.ccip.ui.event.EventFragment
 import app.opass.ccip.ui.fastpass.FastPassFragment
 import app.opass.ccip.ui.fastpass.MyTicketFragment
 import app.opass.ccip.ui.schedule.ScheduleTabFragment
@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 
         val event = PreferenceUtil.getCurrentEvent(this)
         if (event.eventId.isEmpty()) {
-            startActivity(Intent(this, EventActivity::class.java))
+            startActivity(Intent(this, EventFragment::class.java))
             finish()
             return
         }
@@ -265,7 +265,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     private fun onDrawerItemClick(item: Any) {
         when (item) {
             MenuAction.SWITCH_EVENT -> {
-                this.startActivity(Intent(this, EventActivity::class.java))
+                this.startActivity(Intent(this, EventFragment::class.java))
                 finish()
             }
             MenuAction.LAUNCH_ABOUT_SCREEN -> {

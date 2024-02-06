@@ -12,7 +12,7 @@ import app.opass.ccip.databinding.FragmentTokenEntryBinding
 import app.opass.ccip.databinding.IncludeAuthHeaderBinding
 import app.opass.ccip.extension.focusAndShowKeyboard
 import app.opass.ccip.extension.isInverted
-import app.opass.ccip.ui.event.EventActivity
+import app.opass.ccip.ui.event.EventFragment
 import app.opass.ccip.util.PreferenceUtil
 import coil.load
 
@@ -42,7 +42,7 @@ class TokenEntryFragment : AuthActivity.PageFragment() {
         })
         val header = IncludeAuthHeaderBinding.bind(binding.root)
         header.notThisEvent.setOnClickListener {
-            startActivity(Intent(requireContext(), EventActivity::class.java))
+            startActivity(Intent(requireContext(), EventFragment::class.java))
         }
 
         val context = requireContext()

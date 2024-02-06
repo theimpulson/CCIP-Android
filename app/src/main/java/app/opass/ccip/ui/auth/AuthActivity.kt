@@ -15,7 +15,7 @@ import androidx.viewpager2.widget.ViewPager2.SCROLL_STATE_IDLE
 import app.opass.ccip.R
 import app.opass.ccip.databinding.ActivityAuthBinding
 import app.opass.ccip.ui.MainActivity
-import app.opass.ccip.ui.event.EventActivity
+import app.opass.ccip.ui.event.EventFragment
 import com.google.android.material.snackbar.Snackbar
 import com.google.zxing.*
 import com.google.zxing.common.HybridBinarizer
@@ -204,13 +204,13 @@ class AuthActivity : AppCompatActivity() {
         if (isSuccess) {
             intent!!.extras!!.getString(EXTRA_TOKEN)?.let { processToken(it, disableRetry = true) } ?: onAuthFinished()
         } else {
-            startActivity(Intent(this, EventActivity::class.java))
+            startActivity(Intent(this, EventFragment::class.java))
             finish()
         }
     }
 
     fun switchEvent() {
-        startActivity(Intent(this, EventActivity::class.java))
+        startActivity(Intent(this, EventFragment::class.java))
         finish()
     }
 

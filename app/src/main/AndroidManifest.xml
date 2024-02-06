@@ -52,9 +52,6 @@
             android:name=".ui.sessiondetail.SessionDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-        <activity
-            android:name=".ui.event.EventActivity"
-            android:screenOrientation="portrait" />
 
         <receiver android:name=".util.SessionAlarmReceiver" />
         <receiver android:name=".util.RebootReceiver" android:exported="true">

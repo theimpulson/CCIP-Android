@@ -95,4 +95,9 @@ dependencies {
     val markwonVersion = "4.6.2"
     implementation("io.noties.markwon:core:$markwonVersion")
     implementation("io.noties.markwon:linkify:$markwonVersion")
+
+    // Navigation Components
+    val navVersion = "2.7.6"
+    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 }

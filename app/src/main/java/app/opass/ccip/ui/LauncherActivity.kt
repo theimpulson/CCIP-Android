@@ -6,10 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import app.opass.ccip.ui.auth.AuthActivity
 import app.opass.ccip.ui.event.EventActivity
 import app.opass.ccip.util.PreferenceUtil
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.MainScope
 
-class LauncherActivity : AppCompatActivity(), CoroutineScope by MainScope() {
+class LauncherActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

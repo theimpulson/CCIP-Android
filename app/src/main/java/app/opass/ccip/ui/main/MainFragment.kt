@@ -41,7 +41,11 @@ class MainFragment : Fragment(R.layout.fragment_main), FeatureAdapter.FeatureCli
 
             binding.recyclerView.apply {
                 val featureAdapter = FeatureAdapter(this@MainFragment)
-                layoutManager = GridLayoutManager(requireContext(), 4)
+                layoutManager = object : GridLayoutManager(requireContext(), 4) {
+                    override fun canScrollVertically(): Boolean {
+                        return false
+                    }
+                }
                 adapter = featureAdapter
                 featureAdapter.submitList(currentEvent.features)
             }

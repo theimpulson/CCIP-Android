@@ -53,52 +53,52 @@ class FeatureAdapter(private val listener: FeatureClickListener) :
 
             when (feature.feature) {
                 FeatureType.ANNOUNCEMENT -> {
-                    logo.load(R.drawable.ic_announcement)
+                    logo.setImageResource(R.drawable.ic_announcement)
                     title.text = context.getString(R.string.announcement)
                 }
 
                 FeatureType.FAST_PASS -> {
-                    logo.load(R.mipmap.ic_launcher_foreground)
+                    logo.setImageResource(R.mipmap.ic_launcher_foreground)
                     title.text = context.getString(R.string.fast_pass)
                 }
 
                 FeatureType.IM -> {
-                    logo.load(R.drawable.ic_im)
+                    logo.setImageResource(R.drawable.ic_im)
                     title.text = feature.displayText.findBestMatch(context)
                 }
 
                 FeatureType.PUZZLE -> {
-                    logo.load(R.drawable.ic_puzzle)
+                    logo.setImageResource(R.drawable.ic_puzzle)
                     title.text = context.getString(R.string.puzzle)
                 }
 
                 FeatureType.SCHEDULE -> {
-                    logo.load(R.drawable.ic_schedule)
+                    logo.setImageResource(R.drawable.ic_schedule)
                     title.text = context.getString(R.string.schedule)
                 }
 
                 FeatureType.SPONSORS -> {
-                    logo.load(R.drawable.ic_sponsor)
+                    logo.setImageResource(R.drawable.ic_sponsor)
                     title.text = context.getString(R.string.sponsors)
                 }
 
                 FeatureType.STAFFS -> {
-                    logo.load(R.drawable.ic_staff)
+                    logo.setImageResource(R.drawable.ic_staff)
                     title.text = context.getString(R.string.staffs)
                 }
 
                 FeatureType.TELEGRAM -> {
-                    logo.load(R.drawable.telegram_logo)
+                    logo.setImageResource(R.drawable.telegram_logo)
                     title.text = context.getString(R.string.telegram)
                 }
 
                 FeatureType.TICKET -> {
-                    logo.load(R.drawable.ic_ticket)
+                    logo.setImageResource(R.drawable.ic_ticket)
                     title.text = context.getString(R.string.my_ticket)
                 }
 
                 FeatureType.VENUE -> {
-                    logo.load(R.drawable.ic_venue)
+                    logo.setImageResource(R.drawable.ic_venue)
                     title.text = context.getString(R.string.venue)
                 }
 
@@ -108,7 +108,7 @@ class FeatureAdapter(private val listener: FeatureClickListener) :
                 }
 
                 FeatureType.WIFI -> {
-                    logo.load(R.drawable.ic_wifi)
+                    logo.setImageResource(R.drawable.ic_wifi)
                     title.text = context.getString(R.string.wifi)
                 }
             }

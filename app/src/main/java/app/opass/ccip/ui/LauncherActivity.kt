@@ -5,8 +5,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import app.opass.ccip.databinding.ActivityLauncherBinding
 import app.opass.ccip.ui.auth.AuthActivity
-import app.opass.ccip.ui.event.EventFragment
-import app.opass.ccip.util.PreferenceUtil
 
 class LauncherActivity : AppCompatActivity() {
 
@@ -17,7 +15,6 @@ class LauncherActivity : AppCompatActivity() {
         binding = ActivityLauncherBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val currentEventId = PreferenceUtil.getCurrentEvent(this).eventId
         val isLaunchedFromHistory = intent.flags and Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY != 0
 
         if (intent.action == Intent.ACTION_VIEW && !isLaunchedFromHistory) {
@@ -32,9 +29,6 @@ class LauncherActivity : AppCompatActivity() {
                 }
                 return finish()
             }
-        }
-        if (currentEventId.isNotEmpty()) {
-            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 }

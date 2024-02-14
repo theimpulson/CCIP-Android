@@ -1,14 +1,13 @@
 package app.opass.ccip.ui.event
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import app.opass.ccip.R
 import app.opass.ccip.databinding.FragmentEventBinding
-import app.opass.ccip.ui.MainActivity
 import app.opass.ccip.util.PreferenceUtil
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
@@ -45,7 +44,9 @@ class EventFragment : Fragment(R.layout.fragment_event), EventAdapter.EventClick
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.eventConfig.filterNotNull().collect {
                 PreferenceUtil.setCurrentEvent(requireContext(), it)
-                startActivity(Intent(requireContext(), MainActivity::class.java))
+                findNavController().navigate(
+                    EventFragmentDirections.actionEventFragmentToMainFragment()
+                )
             }
         }
     }

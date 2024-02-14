@@ -3,11 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_resource"
-    app:startDestination="@id/eventFragment">
+    app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/eventFragment"
         android:name="app.opass.ccip.ui.event.EventFragment"
         android:label="@string/event"
-        tools:layout="@layout/fragment_event" />
+        tools:layout="@layout/fragment_event">
+        <action
+            android:id="@+id/action_eventFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/navigation_resource"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="app.opass.ccip.ui.main.MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_eventFragment"
+            app:destination="@id/eventFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/navigation_resource"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

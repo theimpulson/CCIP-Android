@@ -1,7 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE resources [
-    <!ENTITY appname "OPass">
-]>
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [<!ENTITY appname "OPass">]>
 
 <resources>
     <string name="app_name">&appname;</string>
@@ -131,4 +128,8 @@
     <string name="get_notified_desc">OPass can send you notification just before this event starts. Would you like to allow OPass required permissions?</string>
     <string name="dont_ask_again">Don\'t ask again</string>
     <string name="later">Later</string>
+
+    <!-- MainFragment -->
+    <string name="settings">Settings</string>
+    <string name="wifi">WiFi</string>
 </resources>

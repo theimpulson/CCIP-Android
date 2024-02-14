@@ -31,8 +31,13 @@ class MainFragment : Fragment(R.layout.fragment_main), FeatureAdapter.FeatureCli
         if (currentEvent.eventId.isBlank()) {
             findNavController().navigate(MainFragmentDirections.actionMainFragmentToEventFragment())
         } else {
-            binding.toolbar.title = currentEvent.displayName.findBestMatch(requireContext())
             binding.logo.load(currentEvent.logoUrl)
+            binding.toolbar.apply {
+                title = currentEvent.displayName.findBestMatch(requireContext())
+                setNavigationOnClickListener {
+                    findNavController().navigate(R.id.eventSheetFragment)
+                }
+            }
 
             binding.recyclerView.apply {
                 val featureAdapter = FeatureAdapter(this@MainFragment)

@@ -45,7 +45,11 @@ class EventFragment : Fragment(R.layout.fragment_event), EventAdapter.EventClick
             viewModel.eventConfig.filterNotNull().collect {
                 PreferenceUtil.setCurrentEvent(requireContext(), it)
                 findNavController().navigate(
-                    EventFragmentDirections.actionEventFragmentToMainFragment()
+                    if (findNavController().currentDestination?.id == R.id.eventSheetFragment) {
+                        EventSheetFragmentDirections.actionEventSheetFragmentToMainFragment()
+                    } else {
+                        EventFragmentDirections.actionEventFragmentToMainFragment()
+                    }
                 )
             }
         }

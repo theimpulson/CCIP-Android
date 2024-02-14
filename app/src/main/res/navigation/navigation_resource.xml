@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_mainFragment_to_wiFiNetworkFragment"
             app:destination="@id/wiFiNetworkFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_eventSheetFragment"
+            app:destination="@id/eventSheetFragment" />
     </fragment>
     <dialog
         android:id="@+id/wiFiNetworkFragment"
@@ -38,5 +41,17 @@
         <argument
             android:name="wifiNetworkInfo"
             app:argType="app.opass.ccip.model.WifiNetworkInfo[]" />
+    </dialog>
+    <dialog
+        android:id="@+id/eventSheetFragment"
+        android:name="app.opass.ccip.ui.event.EventSheetFragment"
+        android:label="@string/event"
+        tools:layout="@layout/fragment_event_sheet">
+        <action
+            android:id="@+id/action_eventSheetFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/navigation_resource"
+            app:popUpToInclusive="true" />
     </dialog>
 </navigation>

@@ -37,6 +37,7 @@ import app.opass.ccip.ui.event.EventFragment
 import app.opass.ccip.ui.fastpass.FastPassFragment
 import app.opass.ccip.ui.fastpass.MyTicketFragment
 import app.opass.ccip.ui.schedule.ScheduleTabFragment
+import app.opass.ccip.ui.wifi.WifiNetworkAdapter
 import app.opass.ccip.util.CryptoUtil
 import app.opass.ccip.util.PreferenceUtil
 import app.opass.ccip.util.WifiUtil

@@ -27,5 +27,16 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/navigation_resource"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_mainFragment_to_wiFiNetworkFragment"
+            app:destination="@id/wiFiNetworkFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/wiFiNetworkFragment"
+        android:name="app.opass.ccip.ui.wifi.WiFiNetworkFragment"
+        android:label="@string/wifi" >
+        <argument
+            android:name="wifiNetworkInfo"
+            app:argType="app.opass.ccip.model.WifiNetworkInfo[]" />
+    </dialog>
 </navigation>

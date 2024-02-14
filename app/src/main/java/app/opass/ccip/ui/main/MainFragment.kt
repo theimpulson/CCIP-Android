@@ -60,7 +60,15 @@ class MainFragment : Fragment(R.layout.fragment_main), FeatureAdapter.FeatureCli
 
             FeatureType.TICKET -> {}
 
-            FeatureType.WIFI -> {}
+            FeatureType.WIFI -> {
+                if (!feature.wifiNetworks.isNullOrEmpty()) {
+                    findNavController().navigate(
+                        MainFragmentDirections.actionMainFragmentToWiFiNetworkFragment(
+                            feature.wifiNetworks.toTypedArray()
+                        )
+                    )
+                }
+            }
 
             else -> customTabsIntent.launchUrl(requireContext(), Uri.parse(feature.url))
         }

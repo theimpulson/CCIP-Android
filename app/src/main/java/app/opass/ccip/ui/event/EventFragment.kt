@@ -1,7 +1,9 @@
 package app.opass.ccip.ui.event
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -14,6 +16,8 @@ import kotlinx.coroutines.launch
 
 class EventFragment : Fragment(R.layout.fragment_event), EventAdapter.EventClickListener {
 
+    private val TAG = EventFragment::class.java.simpleName
+
     private var _binding: FragmentEventBinding? = null
     private val binding get() = _binding!!
 
@@ -24,6 +28,16 @@ class EventFragment : Fragment(R.layout.fragment_event), EventAdapter.EventClick
         _binding = FragmentEventBinding.bind(view)
 
         binding.retry.setOnClickListener { viewModel.getEvents() }
+        binding.toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.refresh -> {
+                    viewModel.getEvents()
+                    Toast.makeText(requireContext(), R.string.refreshing, Toast.LENGTH_SHORT).show()
+                }
+                else -> Log.i(TAG, "No action for ${it.itemId}")
+            }
+            true
+        }
 
         val adapter = EventAdapter(this)
         binding.events.adapter = adapter

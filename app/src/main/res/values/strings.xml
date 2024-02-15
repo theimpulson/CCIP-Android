@@ -129,6 +129,10 @@
     <string name="dont_ask_again">Don\'t ask again</string>
     <string name="later">Later</string>
 
+    <!-- EventFragment -->
+    <string name="refresh">Refresh</string>
+    <string name="refreshing">Refreshing…</string>
+
     <!-- MainFragment -->
     <string name="settings">Settings</string>
     <string name="wifi">WiFi</string>

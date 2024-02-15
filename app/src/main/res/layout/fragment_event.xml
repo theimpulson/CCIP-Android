@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
+        app:menu="@menu/event"
         app:title="@string/select_event"
         app:titleCentered="true" />
 

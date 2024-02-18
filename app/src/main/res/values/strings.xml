@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [<!ENTITY appname "OPass">]>
 
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">&appname;</string>
 
     <string name="select_event">Select Event</string>
@@ -136,4 +136,8 @@
     <!-- MainFragment -->
     <string name="settings">Settings</string>
     <string name="wifi">WiFi</string>
+
+    <!-- ScheduleTabFragment -->
+    <string name="search_hint">Search Events</string>
+    <string name="formatted_time" translatable="false"><xliff:g id="start_time">%1$s</xliff:g> ~ <xliff:g id="end_time">%2$s</xliff:g></string>
 </resources>

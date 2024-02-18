@@ -54,4 +54,9 @@
             app:popUpTo="@id/navigation_resource"
             app:popUpToInclusive="true" />
     </dialog>
+    <fragment
+        android:id="@+id/scheduleTabFragment"
+        android:name="app.opass.ccip.ui.schedule.ScheduleTabFragment"
+        android:label="@string/schedule"
+        tools:layout="@layout/fragment_schedule_tab" />
 </navigation>

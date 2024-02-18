@@ -1,15 +1,22 @@
 package app.opass.ccip.ui.schedule
 
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.lifecycle.Lifecycle
+import androidx.viewpager2.adapter.FragmentStateAdapter
 
 class ScheduleTabAdapter(
-    fm: FragmentManager,
+    fragmentManager: FragmentManager,
+    lifecycle: Lifecycle,
     private val dates: List<String>
-) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-    override fun getItem(position: Int) = ScheduleFragment.newInstance(dates[position])
+) : FragmentStateAdapter(fragmentManager, lifecycle) {
 
-    override fun getCount() = dates.size
+    override fun getItemCount(): Int {
+        return dates.size
+    }
 
-    override fun getPageTitle(position: Int) = dates[position]
+    override fun createFragment(position: Int): Fragment {
+        return ScheduleFragment(dates[position])
+    }
+
 }

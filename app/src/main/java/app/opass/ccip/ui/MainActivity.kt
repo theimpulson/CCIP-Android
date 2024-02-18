@@ -285,7 +285,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 isDefaultFeatureSelected = item == defaultFeatureItem
                 val fragment = when (feature.feature) {
                     FeatureType.FAST_PASS -> FastPassFragment()
-                    FeatureType.SCHEDULE -> ScheduleTabFragment.newInstance(feature.url!!)
+                    FeatureType.SCHEDULE -> ScheduleTabFragment()
                     FeatureType.ANNOUNCEMENT -> AnnouncementFragment.newInstance(feature.url!!)
                     FeatureType.TICKET -> MyTicketFragment()
                     FeatureType.PUZZLE -> PuzzleFragment.newInstance(feature.url!!)

@@ -65,7 +65,7 @@ class MainFragment : Fragment(R.layout.fragment_main), FeatureAdapter.FeatureCli
 
             FeatureType.PUZZLE -> {}
 
-            FeatureType.SCHEDULE -> {}
+            FeatureType.SCHEDULE -> findNavController().navigate(R.id.scheduleTabFragment)
 
             FeatureType.TICKET -> {}
 

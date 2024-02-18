@@ -1,114 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:clipChildren="false">
+    android:layout_margin="10dp"
+    android:clickable="true"
+    android:clipChildren="false"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginVertical="4dp"
-        app:cardElevation="2dp">
+    <LinearLayout
+        android:id="@+id/sessionLayout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/arrowForward"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/session_layout"
+        <LinearLayout
+            android:id="@+id/sessionDataLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp">
+
+                <TextView
+                    android:id="@+id/room"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAccent"
+                    android:paddingHorizontal="10dp"
+                    android:textColor="@android:color/white"
+                    tools:text="RB 105" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="?android:attr/textColorPrimary"
+                tools:text="6:20 ~ 6:30" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="2dp"
+            android:id="@+id/title"
+            android:paddingHorizontal="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="12dp">
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="20sp"
+            tools:text="OPass 2024: Welcome Day 1" />
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/room"
-                style="@style/Session.Room"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
-                android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                android:padding="2dp"
-                android:text="New Text"
-                app:layout_constraintBottom_toTopOf="@id/tagsBarrier"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/title"
-                style="@style/Session"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp"
-                android:text="Title"
-                app:layout_constraintBottom_toTopOf="@id/firstRowBarrier"
-                app:layout_constraintEnd_toStartOf="@+id/star"
-                app:layout_constraintStart_toEndOf="@+id/room"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <ImageButton
-                android:id="@+id/star"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="?selectableItemBackgroundBorderless"
-                android:padding="8dp"
-                android:src="@drawable/ic_bookmark_border_black_24dp"
-                app:layout_constraintBottom_toTopOf="@+id/firstRowBarrier"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/firstRowBarrier"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:barrierDirection="top" />
-
-            <TextView
-                android:id="@+id/end_time"
-                style="@style/Session"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="End Time"
-                app:layout_constraintBottom_toTopOf="@id/tagsBarrier"
-                app:layout_constraintStart_toEndOf="@+id/room"
-                app:layout_constraintTop_toBottomOf="@+id/firstRowBarrier" />
-
-            <TextView
-                android:id="@+id/type"
-                style="@style/Session.Type"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="12dp"
-                android:gravity="end"
-                android:text="Type"
-                app:layout_constraintBottom_toTopOf="@id/tagsBarrier"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/end_time"
-                app:layout_constraintTop_toTopOf="@+id/firstRowBarrier" />
-
-            <app.opass.ccip.ui.schedule.TouchIgnoringRecyclerView
-                android:id="@+id/tags"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tagsBarrier" />
-
-            <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/tagsBarrier"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:barrierDirection="top" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-</LinearLayout>
+    <ImageView
+        android:id="@+id/arrowForward"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_arrow_forward"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

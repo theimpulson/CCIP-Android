@@ -1,11 +1,14 @@
 package app.opass.ccip.model
 
 import android.content.Context
+import android.os.Parcelable
 import app.opass.ccip.util.LocaleUtil
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+@Parcelize
 data class Session(
     val id: String,
     val room: Room,
@@ -25,7 +28,8 @@ data class Session(
     @SerializedName("co_write")
     val coWrite: String?,
     val tags: List<SessionTag>
-) {
+) : Parcelable {
+
     private val sdf: SimpleDateFormat get() = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZZZZZ", Locale.getDefault())
     val startLong: Long get() = sdf.parse(start)!!.time
     val endLong: Long get() = sdf.parse(end)!!.time
